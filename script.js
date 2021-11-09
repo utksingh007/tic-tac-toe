@@ -1,5 +1,5 @@
 let choice = "X", currentTurn = "X", turn = "X", computer = "O";
-let player1 = 0, draw = 0, player2 = 0, flag = 0;
+let player1 = 0, draw = 0, player2 = 0, flag = 0, x;
 let singlePlayer = false, multiPlayer = true;
 
 let boxes = document.getElementsByClassName("box");
@@ -9,6 +9,15 @@ function changeTurn(){
     if(currentTurn === "X")
         return "O";
     return "X";
+}
+
+function checkViewport(x){
+    if (x.matches){
+        return true;
+    } 
+    else{
+        return false;
+    }
 }
 
 function canWin(pos, char){
@@ -31,7 +40,6 @@ function checkForWinner(){
     let winningSequences = [[0, 1, 2, 0, 5, 0], [3, 4, 5, 0, 15, 0], [6, 7, 8, 0, 25, 0], [0, 3, 6, -10, 15, 90], [1, 4, 7, 0, 15, 90], [2, 5, 8, 10, 15, 90], [0, 4, 8, 0, 15, 45], [2, 4, 6, 0, 15, 135]];
     for(let i=0;i<8;i++){
         if(boxValues[winningSequences[i][0]].innerHTML !== '' && boxValues[winningSequences[i][0]].innerHTML === boxValues[winningSequences[i][1]].innerHTML && boxValues[winningSequences[i][1]].innerHTML === boxValues[winningSequences[i][2]].innerHTML){
-            document.querySelector(".line").style.transform = `translate(${winningSequences[i][3]}vw, ${winningSequences[i][4]}vw) rotate(${winningSequences[i][5]}deg)`;
             if(boxValues[winningSequences[i][0]].innerHTML === choice){
                 player1++;
                 document.querySelector(".win").innerText = player1.toString();
@@ -40,7 +48,12 @@ function checkForWinner(){
                 player2++;
                 document.querySelector(".loss").innerText = player2.toString();
             }
-            document.querySelector(".line").style.display = "block";
+            x = window.matchMedia("(min-width: 900px)");
+            let ret = checkViewport(x);
+            if(ret === true){
+                document.querySelector(".line").style.transform = `translate(${winningSequences[i][3]}vw, ${winningSequences[i][4]}vw) rotate(${winningSequences[i][5]}deg)`;
+                document.querySelector(".line").style.display = "block";
+            }
             return true;
         }
     }
