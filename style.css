@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap');
+
 *{
     margin: 0px;
     padding: 0px;
@@ -5,7 +7,7 @@
 
 body{
     background-color: rgb(241, 241, 241);
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-family: 'Dosis', sans-serif;
 }
 
 h1{
@@ -38,7 +40,7 @@ nav ul{
     border: none;
     background-color: white;
     font-size: 17px;
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-family: 'Dosis', sans-serif;
     height: 37px;
     border-radius: 8px;
     padding: 5px;
@@ -114,6 +116,7 @@ nav ul{
     padding: 3px;
     margin: 8px;
     margin-top: 20px;
+    font-family: 'Dosis', sans-serif;
 }
 
 #reset:hover{
@@ -127,6 +130,7 @@ nav ul{
     padding: 3px;
     margin-left: 20px;
     margin-top: 20px;
+    font-family: 'Dosis', sans-serif;
 }
 
 #clear:hover{
