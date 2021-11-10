@@ -38,6 +38,7 @@ function canWin(pos, char){
 
 function checkForWinner(){
     let winningSequences = [[0, 1, 2, 0, 5, 0], [3, 4, 5, 0, 15, 0], [6, 7, 8, 0, 25, 0], [0, 3, 6, -10, 15, 90], [1, 4, 7, 0, 15, 90], [2, 5, 8, 10, 15, 90], [0, 4, 8, 0, 15, 45], [2, 4, 6, 0, 15, 135]];
+    let lineAnimationValues = [[0, 10, 0], [0, 35, 0], [0, 57, 0], [-23, 34, 90], [0, 34, 90], [23, 34, 90], [0, 34, 45], [0, 34, 135]];
     for(let i=0;i<8;i++){
         if(boxValues[winningSequences[i][0]].innerHTML !== '' && boxValues[winningSequences[i][0]].innerHTML === boxValues[winningSequences[i][1]].innerHTML && boxValues[winningSequences[i][1]].innerHTML === boxValues[winningSequences[i][2]].innerHTML){
             if(boxValues[winningSequences[i][0]].innerHTML === choice){
@@ -52,8 +53,11 @@ function checkForWinner(){
             let ret = checkViewport(x);
             if(ret === true){
                 document.querySelector(".line").style.transform = `translate(${winningSequences[i][3]}vw, ${winningSequences[i][4]}vw) rotate(${winningSequences[i][5]}deg)`;
-                document.querySelector(".line").style.display = "block";
             }
+            else{
+                document.querySelector(".line").style.transform = `translate(${lineAnimationValues[i][0]}vw, ${lineAnimationValues[i][1]}vw) rotate(${lineAnimationValues[i][2]}deg)`;
+            }
+            document.querySelector(".line").style.display = "block";
             return true;
         }
     }
